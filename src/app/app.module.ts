@@ -3,10 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './commponents/home/home.component';
+import { FavoritesComponent } from './commponents/favorites/favorites.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
