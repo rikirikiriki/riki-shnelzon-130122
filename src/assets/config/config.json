@@ -1,5 +1,4 @@
 {
     "apiKey": "Sd329GPKB5tQ15NiCmjJn8SjmBWvDX6O",
-    "forecastApiOneDayUrl": "http://dataservice.accuweather.com/forecasts/v1/daily/1day",
     "forecastApiFiveDaysUrl": "http://dataservice.accuweather.com/forecasts/v1/daily/5day"
 }

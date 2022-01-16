@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ForecastService } from 'src/app/services/forecast.service';
 import {Forecast} from '../../interfaces/forecast.interface'
+import config from '../../services/config.service' 
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,18 @@ import {Forecast} from '../../interfaces/forecast.interface'
 })
 export class HomeComponent implements OnInit {
 
+  private readonly _fiveDaysSessionKey = "fiveDays_";
+  private readonly _telAvivLocationId = "215854";
+
   constructor(private _forecastService: ForecastService) { }
 
   ngOnInit(): void {
 
-    this._forecastService.getForecastForOneDay("215854")
+    const defaultLocation = this._telAvivLocationId;
+    const sessionStorageKey = this._fiveDaysSessionKey + this._telAvivLocationId;
+    this._forecastService.getForecast(defaultLocation, sessionStorageKey, config.forecastApiFiveDaysUrl, config.apiKey)
       .subscribe((forecast: Forecast) => {
-        console.log(forecast)
+        
       })
   }
 
