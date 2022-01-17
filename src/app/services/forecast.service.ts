@@ -5,42 +5,36 @@ import { Observable, of } from 'rxjs';
 import {tap, map} from 'rxjs/operators';
 
 import { Forecast } from '../interfaces/forecast.interface';
+import config from '../services/config.service' ;
+import { SessionStorageService } from './session-storge.service';
+
+
 
 @Injectable()
 export class ForecastService {
     
 
 
-    constructor(private _httpClient: HttpClient){
+    constructor(private _httpClient: HttpClient, private _storageService: SessionStorageService){
     }
     
-    private _saveDataToSession(key: string, data: Forecast): void{
-        if(!sessionStorage.hasOwnProperty(key)){
-            sessionStorage.setItem(key, JSON.stringify(data));
-        }
-    }
-
-    private _getDataFromSession(key: string): Forecast {
-        const data: Forecast = JSON.parse(sessionStorage.getItem(key)); 
-        return data; 
-    }
 
 
+    getForecasts(location: string): Observable<Forecast[]>{
+        const sessionStorageKey = `forecast_${location}`;
+        const forecasts = this._storageService.getDataFromSession<Forecast[]>(sessionStorageKey);
 
-    getForecast(location: string, sessionStorageKey: string, url: string, apiKey: string): Observable<Forecast>{
-        const forecast = this._getDataFromSession(sessionStorageKey);
-
-        if(forecast) return of(forecast);
+        if(forecasts) return of(forecasts);
 
         const params = new HttpParams()
-            .set("apikey", apiKey)
+            .set("apikey", config.apiKey)
             .set("language", "en-us")
             .set("details", "false")
             .set("metric", "true");
-        return this._httpClient.get(`${url}/${location}`, {params})
+        return this._httpClient.get(`${config.forecastApiFiveDaysUrl}/${location}`, {params})
             .pipe(map((response: any) => response["DailyForecasts"].map((item: Forecast) => ({...item, "favorite": false}))))
             .pipe(tap((forecasts: Forecast[]) => {            
-                this._saveDataToSession(sessionStorageKey, forecasts)
+                this._storageService.saveDataToSession<Forecast[]>(sessionStorageKey, forecasts)
             }))
         
 

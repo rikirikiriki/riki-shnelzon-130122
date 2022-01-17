@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { Forecast } from 'src/app/interfaces/forecast.interface';
 @Component({
   selector: 'app-weather-details',
   templateUrl: './weather-details.component.html',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeatherDetailsComponent implements OnInit {
 
+  @Input() forecasts: Forecast[];
+  @Input() city: string;
+  todayWeather: Forecast;
+  
+
   constructor() { }
 
   ngOnInit(): void {
+    this.todayWeather = this.forecasts[0];
+    console.log(this.todayWeather)
   }
 
 }

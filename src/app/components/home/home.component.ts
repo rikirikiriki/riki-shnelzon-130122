@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { ForecastService } from 'src/app/services/forecast.service';
-import config from '../../services/config.service' ;
+import { LocationService } from 'src/app/services/location.service';
+
 import {Forecast} from '../../interfaces/forecast.interface';
 import {Location} from '../../interfaces/location.interface';
- 
+
 
 @Component({
   selector: 'app-home',
@@ -14,41 +14,18 @@ import {Location} from '../../interfaces/location.interface';
 })
 export class HomeComponent implements OnInit {
 
-  locations$: Observable<Location>; 
-  locations = [
-    {
-      "Version": 1,
-      "Key": "215854",
-      "Type": "City",
-      "Rank": 31,
-      "LocalizedName": "Tel Aviv",
-      "Country": {
-        "ID": "IL",
-        "LocalizedName": "Israel"
-      },
-      "AdministrativeArea": {
-        "ID": "TA",
-        "LocalizedName": "Tel Aviv"
-      }
-  }
-  
-  ]
 
-  private readonly _fiveDaysSessionKey = "fiveDays_";
-  private readonly _telAvivLocationId = "215854";
+  location: Location;
+  city : string;
+  forecasts: Forecast[];
+  constructor(private _forecastService: ForecastService, private _loctionService: LocationService) { }
 
-  constructor(private _forecastService: ForecastService) { 
-    
-  }
-
-  ngOnInit(): void {
-
-    const defaultLocation = this._telAvivLocationId;
-    const sessionStorageKey = this._fiveDaysSessionKey + this._telAvivLocationId;
-    this._forecastService.getForecast(defaultLocation, sessionStorageKey, config.forecastApiFiveDaysUrl, config.apiKey)
-      .subscribe((forecast: Forecast) => {
-        
-      })
+  async ngOnInit(): Promise<void> {
+    const defaultLocation = "tel aviv";
+    const locations = await this._loctionService.getLocation(defaultLocation).toPromise();
+    this.location = locations[0];
+    this.city  = this.location.LocalizedName;
+    this.forecasts = await this._forecastService.getForecasts(this.location.Key).toPromise();
   }
 
 }
