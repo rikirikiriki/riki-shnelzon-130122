@@ -29,10 +29,19 @@ export class ForecastService {
         const params = new HttpParams()
             .set("apikey", config.apiKey)
             .set("language", "en-us")
-            .set("details", "false")
+            .set("details", "true")
             .set("metric", "true");
         return this._httpClient.get(`${config.forecastApiFiveDaysUrl}/${location}`, {params})
-            .pipe(map((response: any) => response["DailyForecasts"].map((item: Forecast) => ({...item, "favorite": false}))))
+            .pipe(map((response: any) => response["DailyForecasts"].map(item => {
+                return {
+                   "Date" : item.Date,
+                   "Temperature" : {
+                     "Value": item.Temperature.Value,
+                     "Unit": item.Temperature.Unit
+                   },
+                   "Description": item.Day.LongPhrase
+                }
+            })))
             .pipe(tap((forecasts: Forecast[]) => {            
                 this._storageService.saveDataToSession<Forecast[]>(sessionStorageKey, forecasts)
             }))

@@ -1,0 +1,28 @@
+.content{
+   box-sizing: border-box;
+   background-color: pink;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+
+}
+
+.location-select{
+   
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 85%;
+    height: 40px;
+    margin: 20px 0;
+    background-color: yellow;
+}
+
+.weather-details{
+    width: 85%;
+    min-height: 400px;
+    background-color: lightgreen;
+}

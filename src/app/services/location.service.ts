@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import {tap} from 'rxjs/operators';
+import {tap, map} from 'rxjs/operators';
 import config from '../../assets/config/config.json';
 
 import {Location} from '../interfaces/location.interface';
@@ -28,6 +28,7 @@ export class LocationService{
             .set("q", location)
             .set("language","en-us");
         return this._httpClient.get(config.locationAutocompelteurl, {params})
+            .pipe(map((response: any) => response.map(item => ({...item, "Favorite": false}))))
             .pipe(tap((response: Location[]) => this._storageService.saveDataToSession<Location[]>(sessionStorageKey, response)));
 
 

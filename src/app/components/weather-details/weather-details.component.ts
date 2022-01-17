@@ -9,6 +9,7 @@ export class WeatherDetailsComponent implements OnInit {
 
   @Input() forecasts: Forecast[];
   @Input() city: string;
+  @Input() locationId: number;
   todayWeather: Forecast;
   
 

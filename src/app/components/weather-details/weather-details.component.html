@@ -1,14 +1,23 @@
 <div class="content">
     
     <div class="top-container">
-        <div class="location">
-            <div>{{city}}</div>
-            <div></div>
+        <div class="info">
+            <div class="city">{{city}}</div>
+            <div class="temperature">{{todayWeather.Temperature.Value}}{{todayWeather.Temperature.Unit}}</div>
         </div>
-        <div class="favorite"></div>
+        <div class="favorite">
+            <div class="icon">
+                <i class="fa fa-heart"></i>
+            </div>
+            <div class="add">
+                <button>add to Favorites</button>
+            </div>
+        </div>
     </div>
     <div class="center-container">
-        <div class="today"></div>
+        <div class="weather-description">
+            <h2>{{todayWeather.Description}}</h2>
+        </div>
     </div>
     <div class="bottom-container">
         <div class="forecast-list"></div>

@@ -14,9 +14,8 @@ import {Location} from '../../interfaces/location.interface';
 })
 export class HomeComponent implements OnInit {
 
-
+  
   location: Location;
-  city : string;
   forecasts: Forecast[];
   constructor(private _forecastService: ForecastService, private _loctionService: LocationService) { }
 
@@ -24,7 +23,6 @@ export class HomeComponent implements OnInit {
     const defaultLocation = "tel aviv";
     const locations = await this._loctionService.getLocation(defaultLocation).toPromise();
     this.location = locations[0];
-    this.city  = this.location.LocalizedName;
     this.forecasts = await this._forecastService.getForecasts(this.location.Key).toPromise();
   }
 

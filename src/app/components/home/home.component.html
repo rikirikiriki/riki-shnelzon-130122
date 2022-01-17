@@ -1,15 +1,17 @@
-<div>
-    <input matInput
-
-    [matAutocomplete]="location"
+<div class="content">
+    <div class="location-select">
+        <input matInput
+        [matAutocomplete]="location"
     >
     <!-- <mat-autocomplete #location="matAutocomplete">
-        <mat-option *ngFor="let location of locations | async" [value]="location.LocalizedName">
+        <mat-option *ngFor="let location of locations" [value]="location.LocalizedName">
 
         </mat-option>
 
     </mat-autocomplete> -->
-    <ng-container *ngIf="forecasts">
-        <app-weather-details  [forecasts]="forecasts" [city]="city" ></app-weather-details>
-    </ng-container>
+    </div>
+    
+    <div *ngIf="forecasts" class="weather-details">
+        <app-weather-details  [forecasts]="forecasts" [city]="location.LocalizedName" [locationId]="location.Key" ></app-weather-details>
+    </div>
 </div>
