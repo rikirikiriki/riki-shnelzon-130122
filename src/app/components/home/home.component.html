@@ -1,2 +1,15 @@
+<div class="content">
+    <div class="search">
+        <form>
+            <mat-form-field appearance="fill">
+                <mat-label>Location</mat-label>
+                <input matInput [matAutocomplete]="locations" type="text" >
+                <mat-autocomplete #locations="matAutocomplete">
+                    <mat-option *ngFor="let location of locations$" | async [value]="location.LocalizedName"></mat-option>
 
-<div>Hi yatotachhhhhhhhhhhhhhhh</div>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </div>
+    <app-weather-details></app-weather-details>
+</div>
