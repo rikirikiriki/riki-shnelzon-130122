@@ -1,6 +1,10 @@
 <div class="content">
     <div class="location-select">
-        <input matInput
+        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>type here to get city</mat-label>
+        <input
+        
+         matInput
         [matAutocomplete]="location"
     >
     <!-- <mat-autocomplete #location="matAutocomplete">
@@ -9,6 +13,7 @@
         </mat-option>
 
     </mat-autocomplete> -->
+    </mat-form-field>
     </div>
     
     <div *ngIf="forecasts" class="weather-details">

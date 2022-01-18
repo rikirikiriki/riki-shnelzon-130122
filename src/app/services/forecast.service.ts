@@ -36,8 +36,8 @@ export class ForecastService {
                 return {
                    "Date" : item.Date,
                    "Temperature" : {
-                     "Value": item.Temperature.Value,
-                     "Unit": item.Temperature.Unit
+                     "Value": item.Temperature.Maximum.Value,
+                     "Unit": item.Temperature.Maximum.Unit
                    },
                    "Description": item.Day.LongPhrase
                 }

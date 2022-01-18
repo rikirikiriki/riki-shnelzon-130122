@@ -16,13 +16,17 @@
     justify-content: center;
     align-items: center;
     width: 85%;
-    height: 40px;
     margin: 20px 0;
     background-color: yellow;
+}
+
+.example-full-width{
+    margin-top: 20px;
 }
 
 .weather-details{
     width: 85%;
     min-height: 400px;
     background-color: lightgreen;
+    padding: 10px;
 }

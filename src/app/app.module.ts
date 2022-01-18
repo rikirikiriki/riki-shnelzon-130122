@@ -15,13 +15,17 @@ import { WeatherDetailsComponent } from './components/weather-details/weather-de
 import { ForecastService } from './services/forecast.service';
 import { SessionStorageService } from './services/session-storge.service';
 import { LocationService } from './services/location.service';
+import { WeatherListComponent } from './components/weather-list/weather-list.component';
+import { WeatherItemComponent } from './components/weather-item/weather-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     FavoritesComponent,
-    WeatherDetailsComponent
+    WeatherDetailsComponent,
+    WeatherListComponent,
+    WeatherItemComponent
   ],
   imports: [
     BrowserModule,
