@@ -1,3 +1,23 @@
 .content{
-    
+    border: 1px solid green;
+    padding: 50px;
+
+
 }
+
+.content * {
+    pointer-events: none;
+}
+ 
+.content:hover{
+    cursor: pointer;
+    border-radius: 5px;
+    transform: scale(1.01);
+    font-weight: 600;
+}
+
+.selected{
+    border-radius: 5px;
+    font-weight: 600;
+}
+

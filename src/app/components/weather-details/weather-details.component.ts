@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Forecast } from 'src/app/interfaces/forecast.interface';
+import { ForecastService } from 'src/app/services/forecast.service';
 @Component({
   selector: 'app-weather-details',
   templateUrl: './weather-details.component.html',
@@ -13,11 +14,14 @@ export class WeatherDetailsComponent implements OnInit {
   todayWeather: Forecast;
   
 
-  constructor() { }
+  constructor(private _forecastService: ForecastService) { }
 
   ngOnInit(): void {
     this.todayWeather = this.forecasts[0];
     console.log(this.todayWeather)
+
+    this._forecastService.forecastSelected$.subscribe((forecast: Forecast) => this.todayWeather = forecast);
+
   }
 
 }

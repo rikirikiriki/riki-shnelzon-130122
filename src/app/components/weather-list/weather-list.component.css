@@ -10,13 +10,6 @@
 .forecast{
 
     display: inline-block;
-    border: 1px solid green;
     padding: 10px;
     width: 200px;
-}
-.forecast:hover{
-    cursor: pointer;
-    border-radius: 5px;
-    transform: scale(1.01);
-    font-weight: 600;
 }

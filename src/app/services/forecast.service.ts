@@ -1,7 +1,7 @@
 
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import {tap, map} from 'rxjs/operators';
 
 import { Forecast } from '../interfaces/forecast.interface';
@@ -13,7 +13,8 @@ import { SessionStorageService } from './session-storge.service';
 @Injectable()
 export class ForecastService {
     
-
+    private _forecastSelected  = new Subject<Forecast>();
+    forecastSelected$: Observable<Forecast> = this._forecastSelected.asObservable();
 
     constructor(private _httpClient: HttpClient, private _storageService: SessionStorageService){
     }
@@ -44,11 +45,17 @@ export class ForecastService {
             })))
             .pipe(tap((forecasts: Forecast[]) => {            
                 this._storageService.saveDataToSession<Forecast[]>(sessionStorageKey, forecasts)
-            }))
-        
-
-
+            })
+        );
     }
+
+    notifyForecastItemSelected(forecast: Forecast): void{
+        this._forecastSelected.next(forecast);
+    }
+
+
+
+
 
 
 
