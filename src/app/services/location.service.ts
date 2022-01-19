@@ -7,26 +7,20 @@ import config from '../../assets/config/config.json';
 import {Location} from '../interfaces/location.interface';
 import { SessionStorageService } from "./session-storge.service";
 
+import { StoredLocation } from "../interfaces/stored-location.interface";
 
-export interface StoredLocation {
-    locationPrefix: string;
-    locations: Location[];
-}
+
+
 
 @Injectable() 
 export class LocationService{
 
 
-    constructor(private _httpClient: HttpClient, private _storageService: SessionStorageService){
+    constructor(private _httpClient: HttpClient, private _storageService: SessionStorageService){}
 
-    }
     private _location: string;
 
-    
-
-
     getLocation(location: string): Observable<Location[]>{
-
         this._location = location.toLowerCase();
 
         let locations =  this._storageService.getDataFromSession<StoredLocation[]>(this._storageService.storedLocationsKey);
@@ -41,10 +35,8 @@ export class LocationService{
                     } 
                }
            }
-
         }
-
-        
+       
         const params = new HttpParams()
             .set("apikey", config.apiKey)
             .set("q", location)
@@ -59,14 +51,10 @@ export class LocationService{
                     this._storageService.saveDataToSession<StoredLocation[]>(this._storageService.storedLocationsKey , locations);
                 }           
             }));
-
-
     }
 
     getLoctionStorageKey(): string{
         return `location_${this._location}`;
 
     }
-
-    
 }

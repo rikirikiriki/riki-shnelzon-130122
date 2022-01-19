@@ -1,5 +1,4 @@
 .content{
-  background-color: aqua;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -11,14 +10,11 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
-  border: 1px solid red;
-  
+  justify-content: space-between; 
 }
 
 .info{
   display: inline-block;
-  border: 1px solid blue;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,14 +28,12 @@ button{
   text-align: center;
   border-radius: 4px;
   padding: 5px 10px;
-  
 }
-button:hover{ 
 
-  background-color: palevioletred;
+button:hover{ 
+  background-color: orange;
   color: white;
   cursor: pointer;
-
 }
 
 .city{
@@ -56,32 +50,22 @@ button:hover{
 
 .favorite{
   display: inline-block;
-  border: 1px solid blue;
   padding: 10px;
-  
 }
 
 .favorite-content-container{
-    border: 1px solid black;
     display: flex;
     gap:10px;
 }
+
 .icon,
 .add{
-
     display: inline-block;
-
 }
 
 .icon{
     height: 20px;
     width: 20px;
-    
-}
-
-.add{
-    
-
 }
 
 .center-container{

@@ -1,11 +1,9 @@
 .content{
    box-sizing: border-box;
-   background-color: pink;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: center;
-
 }
 
 .location-select{
@@ -17,7 +15,9 @@
     align-items: center;
     width: 85%;
     margin: 20px 0;
-    background-color: yellow;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .example-full-width{
@@ -27,6 +27,6 @@
 .weather-details{
     width: 85%;
     min-height: 400px;
-    background-color: lightgreen;
+    background-color: lightgray;
     padding: 10px;
 }

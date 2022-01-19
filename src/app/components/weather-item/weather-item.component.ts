@@ -10,6 +10,7 @@ import { ForecastService } from 'src/app/services/forecast.service';
 export class WeatherItemComponent implements OnInit {
 
   constructor(private _forecastService: ForecastService) { }
+  
   @Input() forecast: Forecast;
 
   ngOnInit(): void {
@@ -18,7 +19,6 @@ export class WeatherItemComponent implements OnInit {
   getDay(date: Date | string): string{
     const day = new Date(date).toDateString().substring(0, 3);
     return day;
-
   }
 
   private _setSelectedItem(element: HTMLElement): void{
@@ -34,8 +34,4 @@ export class WeatherItemComponent implements OnInit {
     console.log(event);
     this._setSelectedItem(event.target as HTMLElement);
   }
-
-
-
-
 }

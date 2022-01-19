@@ -17,7 +17,6 @@ export class WeatherDetailsComponent implements OnInit {
   locationId: number;
   todayWeather: Forecast;
   
-
   constructor(private _forecastService: ForecastService, private _locationService: LocationService, private _storageService: SessionStorageService) { }
 
   ngOnInit(): void {
@@ -25,7 +24,6 @@ export class WeatherDetailsComponent implements OnInit {
     this.city = this.location.LocalizedName;
     this.locationId = +this.location.Key;
     this.todayWeather = this.forecasts[0];
-    console.log(this.todayWeather)
 
     this._forecastService.forecastSelected$.subscribe((forecast: Forecast) => this.todayWeather = forecast);
     this._changeFavoriteButtonText();
@@ -35,7 +33,6 @@ export class WeatherDetailsComponent implements OnInit {
     this._toggleFavorite();
     this._changeFavoriteButtonText();
     this._updateLocationInStorage();  
-   
   }
 
   private _toggleFavorite(): void{
@@ -43,12 +40,11 @@ export class WeatherDetailsComponent implements OnInit {
   }
 
   private _changeFavoriteButtonText(): void{
-
+  
     const addToFavorite = "Add To Favorite";
     const removeFromFavorite = "Remove From Favorite";
     const heart = document.querySelector('#favoriteButton');
     heart.textContent = this.location.Favorite ? removeFromFavorite : addToFavorite;
-
   }
 
   private _updateLocationInStorage():void{

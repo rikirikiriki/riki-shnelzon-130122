@@ -5,6 +5,5 @@ export interface Forecast{
         Value: number;
         Unit: string;
     };
-    Description: string;
-    
+    Description: string;  
 }

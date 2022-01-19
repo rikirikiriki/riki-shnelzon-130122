@@ -1,6 +1,5 @@
 export interface Location{
 
-
     Vesrion: number;
     Key: string;
     Type: string;
@@ -15,5 +14,4 @@ export interface Location{
         LocalizedName: string;
     };
     Favorite: boolean;
-
 }

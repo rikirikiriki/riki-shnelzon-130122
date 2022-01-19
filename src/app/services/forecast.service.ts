@@ -16,11 +16,8 @@ export class ForecastService {
     private _forecastSelected  = new Subject<Forecast>();
     forecastSelected$: Observable<Forecast> = this._forecastSelected.asObservable();
 
-    constructor(private _httpClient: HttpClient, private _storageService: SessionStorageService){
-    }
+    constructor(private _httpClient: HttpClient, private _storageService: SessionStorageService){}
     
-
-
     getForecasts(location: string): Observable<Forecast[]>{
         const sessionStorageKey = `forecast_${location}`;
         const forecasts = this._storageService.getDataFromSession<Forecast[]>(sessionStorageKey);
@@ -52,13 +49,4 @@ export class ForecastService {
     notifyForecastItemSelected(forecast: Forecast): void{
         this._forecastSelected.next(forecast);
     }
-
-
-
-
-
-
-
-
-
 }
