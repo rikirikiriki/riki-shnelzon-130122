@@ -34,7 +34,7 @@ export class WeatherDetailsComponent implements OnInit {
   changeFavorite(): void{
     this._toggleFavorite();
     this._changeFavoriteButtonText();
-    this._updateLocationService();  
+    this._updateLocationInStorage();  
    
   }
 
@@ -51,7 +51,7 @@ export class WeatherDetailsComponent implements OnInit {
 
   }
 
-  private _updateLocationService():void{
+  private _updateLocationInStorage():void{
     const key = this._locationService.getLoctionStorageKey();
     this._storageService.saveDataToSession<Location[]>(key, [this.location]); 
   }

@@ -22,10 +22,10 @@
     font-weight: 600;
 }
 
-.selected{
+.selected, .selected *{
     font-weight: 600;
-    border: 5px solid lightblue;
     border-radius: 3px;
+    color: lightblue;
 
 }
 
