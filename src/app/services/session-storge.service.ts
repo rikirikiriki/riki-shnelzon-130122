@@ -5,9 +5,8 @@ import { Injectable } from "@angular/core";
 export class SessionStorageService{
 
     saveDataToSession<T>(key: string, data: T): void{
-        if(!sessionStorage.hasOwnProperty(key)){
-            sessionStorage.setItem(key, JSON.stringify(data));
-        }
+        sessionStorage.setItem(key, JSON.stringify(data));
+        
     }
 
     getDataFromSession<T>(key: string): T {

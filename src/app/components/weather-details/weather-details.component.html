@@ -8,10 +8,10 @@
         <div class="favorite">
             <div class="favorite-content-container">
                 <div class="icon">
-                    <span class="heart">&#x2764;</span>
+                    <span  [ngClass]="{'heart': this.location.Favorite}">&#x2764;</span>
                 </div>
                 <div class="add">            
-                    <button >add to Favorites </button>
+                    <button id="favoriteButton" (click)="changeFavorite()" >Add To Favorite</button>
                 </div>
             </div>
         </div>

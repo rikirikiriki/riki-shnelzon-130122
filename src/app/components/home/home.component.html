@@ -17,6 +17,6 @@
     </div>
     
     <div *ngIf="forecasts" class="weather-details">
-        <app-weather-details  [forecasts]="forecasts" [city]="location.LocalizedName" [locationId]="location.Key" ></app-weather-details>
+        <app-weather-details  [forecasts]="forecasts" [location]="location"  ></app-weather-details>
     </div>
 </div>

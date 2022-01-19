@@ -14,11 +14,13 @@ export class LocationService{
     constructor(private _httpClient: HttpClient, private _storageService: SessionStorageService){
 
     }
+    private _location: string;
 
 
     getLocation(location: string): Observable<Location[]>{
 
-        const sessionStorageKey = `location_${location}`;      
+        this._location = location.toLowerCase();
+        const sessionStorageKey = this.getLoctionStorageKey();      
         const storedLocation: Location[] = this._storageService.getDataFromSession<Location[]>(sessionStorageKey);
         
         if(storedLocation) return of(storedLocation);
@@ -33,4 +35,11 @@ export class LocationService{
 
 
     }
+
+    getLoctionStorageKey(): string{
+        return `location_${this._location}`;
+
+    }
+
+    
 }

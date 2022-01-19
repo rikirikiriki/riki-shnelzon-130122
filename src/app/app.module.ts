@@ -19,6 +19,9 @@ import { SessionStorageService } from './services/session-storge.service';
 import { LocationService } from './services/location.service';
 import { WeatherListComponent } from './components/weather-list/weather-list.component';
 import { WeatherItemComponent } from './components/weather-item/weather-item.component';
+import { FavoriteComponent } from './components/favorite/favorite.component';
+import { FavoriteListComponent } from './components/favorite-list/favorite-list.component';
+import { FavoriteItemComponent } from './components/favorite-item/favorite-item.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { WeatherItemComponent } from './components/weather-item/weather-item.com
     FavoritesComponent,
     WeatherDetailsComponent,
     WeatherListComponent,
-    WeatherItemComponent
+    WeatherItemComponent,
+    FavoriteComponent,
+    FavoriteListComponent,
+    FavoriteItemComponent
   ],
   imports: [
     BrowserModule,

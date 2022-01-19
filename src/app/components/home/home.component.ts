@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const defaultLocation = "tel aviv";
     const locations = await this._loctionService.getLocation(defaultLocation).toPromise();
+    console.log(locations[0]);
     this.location = locations[0];
     this.forecasts = await this._forecastService.getForecasts(this.location.Key).toPromise();
   }
