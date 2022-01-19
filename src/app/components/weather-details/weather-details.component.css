@@ -70,7 +70,6 @@ button:hover{
 .add{
 
     display: inline-block;
-    border: 1px solid red;
 
 }
 
@@ -90,7 +89,6 @@ button:hover{
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  border: 1px solid red;
   min-height: 200px;
 }
 
@@ -98,7 +96,6 @@ button:hover{
   padding: 10px 0;
   display: flex;
   align-items: center;
-  border: 1px solid blue;
   padding: 0 20px;
 }
 
@@ -107,16 +104,10 @@ button:hover{
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
- 
-  border: 2px solid red;
-  padding: 10px;
 }
 
 .forecast-list{
-    border: 2px solid blue;
-    /* flex: 1; */
     flex-grow: 1;
-    padding: 10px;
 }
 
 .heart{

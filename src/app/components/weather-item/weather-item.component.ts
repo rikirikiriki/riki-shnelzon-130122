@@ -15,13 +15,27 @@ export class WeatherItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  forecastSelected(event: PointerEvent): void{
-    this._forecastService.notifyForecastItemSelected(this.forecast);
-    console.log(event);
+  getDay(date: Date | string): string{
+    const day = new Date(date).toDateString().substring(0, 3);
+    return day;
+
+  }
+
+  private _setSelectedItem(element: HTMLElement): void{
     const selectedClassName = "selected";
     const selectedElements = document.querySelectorAll(`.${selectedClassName}`);
     selectedElements.forEach(e => e.classList.remove(selectedClassName));
-    (event.target as HTMLElement).classList.add(selectedClassName);
+    element.classList.add(selectedClassName);
+
   }
+
+  forecastSelected(event: PointerEvent): void{
+    this._forecastService.notifyForecastItemSelected(this.forecast);
+    console.log(event);
+    this._setSelectedItem(event.target as HTMLElement);
+  }
+
+
+
 
 }

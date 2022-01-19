@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,7 +36,8 @@ import { WeatherItemComponent } from './components/weather-item/weather-item.com
     BrowserAnimationsModule,
     MatAutocompleteModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCardModule
   ],
   providers: [ 
     ForecastService,
